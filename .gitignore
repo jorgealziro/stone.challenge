@@ -3,3 +3,4 @@ terraform.tfstate
 terraform.tfstate.backup
 terraform.tfvars
 .terraform.lock.hcl
+health_alarm_notify.conf
