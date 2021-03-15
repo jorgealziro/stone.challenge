@@ -35,19 +35,24 @@ resource "aws_instance" "web" {
     destination = "/tmp/default"
   }
 
+
   provisioner "file" {
     source      = "./health_alarm_notify.conf"
     destination = "/tmp/health_alarm_notify.conf"
   }
+
   provisioner "remote-exec" {
     inline = [
       "sudo apt update -y && sudo apt upgrade -y",
       "sudo hostname stone-challenge-web",
       "curl -s https://my-netdata.io/kickstart.sh > kickstart.sh",
       "bash kickstart.sh --dont-wait",
+      "sudo mv /tmp/health_alarm_notify.conf /etc/netdata",
+      "sudo systemctl restart netdata",
       "sudo apt install nginx -y",
       "sudo mv /tmp/default /etc/nginx/sites-enabled/default",
-      "sudo systemctl restart nginx"
+      "sudo systemctl restart nginx",
+      "/usr/libexec/netdata/plugins.d/alarm-notify.sh test"
     ]
   }
 
