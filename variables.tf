@@ -30,3 +30,8 @@ variable "subnet_public_az" {
   description = "Availability zone for public subnet"
   default     = "us-west-2a"
 }
+
+variable "sg_public" {
+  description = "Security group for public traffic"
+  default     = "public sg"
+}

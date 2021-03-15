@@ -16,3 +16,12 @@ module "subnet_public" {
   subnet_cidr = var.subnet_public_cidr
   subnet_az   = var.subnet_public_az
 }
+
+module "security_group" {
+  source = "./modules/test_sg"
+
+  vpc_id             = module.test_vpc.id
+  vpc_region         = module.test_vpc.region
+  sg_public          = var.sg_public
+  subnet_public_cidr = var.subnet_public_cidr
+}
