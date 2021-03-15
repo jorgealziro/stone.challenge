@@ -32,7 +32,10 @@ resource "aws_instance" "web" {
 
   provisioner "remote-exec" {
     inline = [
-      "echo eae mondo"
+      "sudo apt update -y && sudo apt upgrade -y",
+      "curl -s https://my-netdata.io/kickstart.sh > kickstart.sh",
+      "bash kickstart.sh --dont-wait",
+      "sudo apt install nginx -y"
     ]
   }
 
