@@ -38,6 +38,7 @@ resource "aws_instance" "web" {
   provisioner "remote-exec" {
     inline = [
       "sudo apt update -y && sudo apt upgrade -y",
+      "sudo hostname stone-challenge-web",
       "curl -s https://my-netdata.io/kickstart.sh > kickstart.sh",
       "bash kickstart.sh --dont-wait",
       "sudo apt install nginx -y",
