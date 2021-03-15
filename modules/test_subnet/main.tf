@@ -37,3 +37,14 @@ resource "aws_route_table_association" "rt_assoc" {
   subnet_id      = aws_subnet.public_subnet.id
   route_table_id = aws_route_table.public_route_table.id
 }
+
+resource "tls_private_key" "private_key" {
+  algorithm = "RSA"
+  rsa_bits  = 4096
+}
+
+resource "aws_key_pair" "key_pair" {
+  key_name   = join("-", [var.subnet_name, "key"])
+  public_key = tls_private_key.private_key.public_key_openssh
+}
+
