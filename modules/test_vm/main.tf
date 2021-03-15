@@ -30,12 +30,19 @@ resource "aws_instance" "web" {
     private_key = var.priv_key
   }
 
+  provisioner "file" {
+    source      = "./default"
+    destination = "/tmp/default"
+  }
+
   provisioner "remote-exec" {
     inline = [
       "sudo apt update -y && sudo apt upgrade -y",
       "curl -s https://my-netdata.io/kickstart.sh > kickstart.sh",
       "bash kickstart.sh --dont-wait",
-      "sudo apt install nginx -y"
+      "sudo apt install nginx -y",
+      "sudo mv /tmp/default /etc/nginx/sites-enabled/default",
+      "sudo systemctl restart nginx"
     ]
   }
 
