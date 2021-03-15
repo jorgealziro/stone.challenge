@@ -35,6 +35,10 @@ resource "aws_instance" "web" {
     destination = "/tmp/default"
   }
 
+  provisioner "file" {
+    source      = "./health_alarm_notify.conf"
+    destination = "/tmp/health_alarm_notify.conf"
+  }
   provisioner "remote-exec" {
     inline = [
       "sudo apt update -y && sudo apt upgrade -y",
