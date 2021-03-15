@@ -23,16 +23,12 @@ resource "aws_instance" "web" {
   key_name      = var.key_name
   subnet_id = var.subnet
 
-  connection {
-    host = self.public_ip
-    type        = "ssh"
-    user        = "ubuntu"
-    private_key = var.priv_key
-  }
+
 
   provisioner "remote-exec" {
     inline = [
-      "echo eae mondo"
+      "sudo apt update -y && sudo apt upgrade -y",
+      "sudo apt install nginx -y"
     ]
   }
 
