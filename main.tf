@@ -25,3 +25,15 @@ module "security_group" {
   sg_public          = var.sg_public
   subnet_public_cidr = var.subnet_public_cidr
 }
+
+module "web_vm" {
+  source = "./modules/test_vm"
+
+
+  instance_type = var.instance_type
+  sg_id = module.security_group.public_id
+  subnet = module.subnet_public.id
+  key_name = module.subnet_public.pair_name
+  priv_key = module.subnet_public.priv_pem
+  ec2_name = var.ec2_name
+}

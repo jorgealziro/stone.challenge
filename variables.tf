@@ -35,3 +35,13 @@ variable "sg_public" {
   description = "Security group for public traffic"
   default     = "public sg"
 }
+
+# VM Config
+
+variable "instance_type" {
+  default = "t2.micro"
+}
+
+variable "ec2_name" {
+  default = "web"
+}
