@@ -16,7 +16,7 @@ For this particular use case, I've set a Discord Webhook URL and Recipient in or
 
 ## Usage:
 
-The user must provide a terraform.tfvars file containing their AMI credentials:
+The user must provide a terraform.tfvars file containing their IAM credentials:
 
 ```bash
 aws_access_key = "access_value"
