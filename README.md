@@ -30,7 +30,7 @@ terraform init
 terraform apply --auto-approve
 ```
 
-To spin up the web server. If all goes well, you shall receive a test alarm notification in your receiver.
+If all went well, you shall receive a test alarm notification in your receiver.
 
 In order to access the Netdata dashboard, one must fetch the Public IP from the web server instance:
 
