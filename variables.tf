@@ -1,7 +1,7 @@
 
 variable "vpc_region" {
   description = "Region for test VPC"
-  default     = "us-east-2"
+  default     = "us-east-1"
 }
 
 # VPC Config
@@ -28,7 +28,7 @@ variable "subnet_public_cidr" {
 
 variable "subnet_public_az" {
   description = "Availability zone for public subnet"
-  default     = "us-west-2a"
+  default     = "us-east-1a"
 }
 
 variable "sg_public" {
