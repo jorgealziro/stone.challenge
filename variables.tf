@@ -28,7 +28,7 @@ variable "subnet_public_cidr" {
 
 variable "subnet_public_az" {
   description = "Availability zone for public subnet"
-  default     = "us-east-1a"
+  default     = "us-west-2a"
 }
 
 variable "sg_public" {
